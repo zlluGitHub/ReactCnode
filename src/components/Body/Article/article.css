@@ -1,0 +1,81 @@
+.articlePanel{
+    background-color: #fff;
+}
+.articlePanel p{
+    margin:0px;
+    padding: 16px;
+
+}
+.topic_header {
+    padding: 10px;
+    border-radius: 3px 3px 0 0;
+    font-size: 14px;
+    word-break: break-word;
+    line-height: 20px;
+    color: #333;
+}
+.topic_full_title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 8px 0;
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 130%;
+}
+.put_top {
+    
+    margin-right: 8px;
+    background: #80bd01;
+    padding: 4px 6px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+}
+.titlebot{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 5px;
+}
+.titlebot ul {
+    display: flex;
+}
+.titlebot input {
+    border-radius: 3px;
+    background-color: #80bd01;
+    border: none;
+    display: inline-block;
+    float: none;
+    padding: 3px 10px;
+    margin: 0;
+    font-size: 14px;
+    transition: all .2s ease-in-out;
+    letter-spacing: 2px;
+    box-shadow: none;
+    line-height: 2em;
+    vertical-align: middle;
+    color: #fff;
+    cursor: pointer;
+}
+.titlebot ul li{
+    list-style-type:disc;
+    margin-left: 24px;
+    font-size: 12px;
+    color: #838383;
+}
+.articlecontent{
+    word-wrap:break-word;
+    word-break:break-all;
+    padding: 20px;
+ 
+}
+.markdown-text code{
+    /* width: 200px; */
+    word-wrap:break-word;
+    word-break:break-all;
+
+}
+.markdown-text p>img{
+    width: 100%;
+
+}

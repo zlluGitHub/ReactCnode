@@ -1,0 +1,37 @@
+
+/* 翻页样式 */
+.page-nav{
+    background-color: #fff;
+    padding: 10px;
+
+}
+.page-nav ul{
+    display: flex;
+    
+}
+
+.page-nav ul li { 
+    display: flex;
+    cursor:pointer;
+    padding: 4px 12px;
+    line-height: 20px;
+    text-decoration: none;
+    color: #778087;
+    border: 1px solid #ddd;
+    border-left: 0px;
+    font-size: 14px;
+}
+.page-nav ul li:nth-child(1){
+    border: 1px solid #ddd;
+    border-radius: 5px 0px 0px 5px;
+}
+.page-nav ul li:last-child{
+    border: 1px solid #ddd;
+    border-radius: 0px 5px 5px 0px;
+}
+.page-nav ul li:hover{
+    background-color: #f5f5f5;
+}
+.page-nav ul li.active{
+    color: #80bd01;
+}

@@ -1,0 +1,26 @@
+.panel .top{
+    padding: 10px;
+    background-color: #f6f6f6;
+    border-radius: 3px 3px 0 0;
+}
+.user-card{
+    display: flex;
+    align-items: center;
+}
+.inner div:nth-child(2){
+    margin-top: 10px;
+}
+.inner div:nth-child(3){
+    font-style: italic;
+    font-size: 13px;
+    padding-top: 10px;
+}
+.user-card a img{
+    width: 48px;
+    height: 48px;
+}
+.user-card>span{
+   margin: 0px 10px;
+   color: #778087;
+   font-size: 16px;
+}

@@ -1,0 +1,92 @@
+.reply{
+    height: 20px;
+    background-color: #e1e1e1;
+}
+.panel{
+    background-color: #e1e1e1;
+}
+.panel .header{
+    padding: 10px;
+   
+    background-color: #f6f6f6;
+    border-radius: 3px 3px 0 0;  
+}
+.panel .header span{
+    color: #444;
+}
+.panel .header span strong{
+    font-weight: lighter;
+}
+.panel ul li {
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+    padding: 10px 0 10px 10px;
+    font-size: 14px;
+}
+.panel ul .reply_item {
+   display: flex;
+}
+.panel ul .reply_item>a{
+  margin-right: 12px;
+}
+.panel ul .reply_item a img{
+   width: 30px;
+}
+.panel ul .reply_item .author{
+   width: 100%;
+}
+.panel ul .reply_item .author{
+    display: flex;
+    justify-content: space-between;
+}
+.panel .reply_item .user_info a:nth-child(1){
+    color: #666;
+
+}
+.panel .reply_item .user_info a:nth-child(2){
+    color: #08c;
+    display:inline-block;
+    margin-left: 8px;
+    font-size: 11px;
+   
+}
+.panel .reply_item .user_active span{
+    color: gray;
+    margin: 0px 5px;
+    font-size: 15px;
+   
+}
+.panel ul li p{
+    font-size: 15px;
+    color: #333;
+    padding: 5px 10px 15px 30px;  
+}
+.panel ul li .articlecontent{ 
+    padding:0px;
+}
+.panel ul li .articlecontent{  
+    padding:0px;   
+}
+.panel ul li .user_active {
+   display: flex;
+}
+
+.panel ul li .user_active i{
+    cursor: pointer;
+}
+.panel ul li .user_active i:nth-child(1).active{ 
+    width: 20px;
+    height: 20px;
+    background: url("../../../images/good.PNG") center center no-repeat;
+}
+.panel ul li:hover .user_active i:nth-child(1){ 
+    width: 20px;
+    height: 20px;
+    background: url("../../../images/good.PNG") center center no-repeat;
+}
+.panel ul li .user_active i:nth-child(3){ 
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    background: url("../../../images/reply.PNG") center center no-repeat;
+}
