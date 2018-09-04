@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './ArticleComment.css';
 import { Link } from 'react-router-dom';
 import MomentComponent from '../TopicList/MomentComponent';
-
+import EditorComponent from '../EditorComponent/EditorComponent';
 class ArticleComment extends Component {
     state = {
         replyId: 1,
@@ -28,13 +28,7 @@ class ArticleComment extends Component {
     render() {
         const { replies } = this.props;
         const { replyId, upsNum } = this.state;
-        // console.log(replies);
-        // const found = replies.find(function(element) {
 
-        //     return element > 10;
-
-        // });
-        // console.log(replies, replyUps);
         const showReplies = replies ? replies.map((data, index) => <li key={data.id}>
             <div className="reply_item">
                 <Link to="/"><img src={data.author ? data.author.avatar_url : ""} alt={data.author ? data.author.loginname : "未知"} /></Link>
@@ -54,7 +48,6 @@ class ArticleComment extends Component {
             <div className="articlecontent" dangerouslySetInnerHTML={{
                 __html: data.content
             }} />
-
         </li>
         ) : (
                 <div>
@@ -72,6 +65,14 @@ class ArticleComment extends Component {
                         {showReplies}
                     </ul>
                 </div>
+                <div className="reply"></div>
+                <div className="panel">
+                    <div className="header">
+                        <span>添加回复</span>
+                    </div>
+                    <EditorComponent />
+                </div>
+
             </div>
         );
     }

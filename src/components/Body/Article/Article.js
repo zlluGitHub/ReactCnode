@@ -9,15 +9,22 @@ class Article extends Component {
     };
     collectArticle = event => {
         const value = event.target.value;
-        event.target.value = value === "收藏" ? "取消收藏" : "收藏";
+
         const { collectArticle, article, cancleCollectArticle } = this.props;
         if (article.is_collect) {
-            cancleCollectArticle(article.id);
-            // console.log(article);
+            cancleCollectArticle(article.id)
         } else {
-            collectArticle(article.id);
-            // console.log(article);
+            if (sessionStorage.token) {
+                collectArticle(article.id);
+                event.target.value = value === "收藏" ? "取消收藏" : "收藏";
+            } else {
+                alert("请登录后收藏！")
+            }
         }
+
+
+        // console.log(article);
+
     }
     render() {
 

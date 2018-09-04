@@ -43,9 +43,11 @@
    align-items: center;
    justify-content: right;
 }
-.navbar-inner ul li a,.navbar-inner ul li span{
+.navbar-inner ul li a,
+.navbar-inner ul li span{
     font-size: 13px;
-    padding: 10px 15px;
-    color: #ccc;
+    padding: 5px 10px;
+    margin: 5px;
+    color: #ccc;cursor: pointer;
    
 }
