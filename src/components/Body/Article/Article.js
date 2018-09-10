@@ -21,15 +21,11 @@ class Article extends Component {
                 alert("请登录后收藏！")
             }
         }
-
-
-        // console.log(article);
-
     }
     render() {
 
-        const { replyAction, article, replyUps } = this.props
-        console.log(this.props);
+        const { replyAction, article, replyUps ,addReply} = this.props
+        
         const articleContent = article !== {} ? (
             <div>
                 <div className="topic_header">
@@ -52,7 +48,7 @@ class Article extends Component {
                 <div className="articlecontent" dangerouslySetInnerHTML={{
                     __html: article.content
                 }} />
-                <ArticleComment replies={article.replies} replyUps={replyUps} replyAction={replyAction} />
+                <ArticleComment replies={article.replies} articleId={article.id} replyUps={replyUps} replyAction={replyAction} addReply={addReply}/>
             </div>
         ) : (
                 <div>努力加载中,请稍后。。。</div>

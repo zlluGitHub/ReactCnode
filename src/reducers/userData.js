@@ -1,4 +1,4 @@
-import { USER_DATA } from '../constants/actionTypes'
+import { USER_DATA ,} from '../constants/actionTypes'
 const userData = (state = { status: false }, action) => {
   // console.log(action.userData);
 

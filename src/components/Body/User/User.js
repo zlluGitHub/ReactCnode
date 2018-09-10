@@ -23,7 +23,7 @@ class User extends Component {
                     <div className="inner">
 
                         <div className="user-card">
-                            <Link to="/">
+                            <Link to="/user">
                                 <img src={userData.userData.avatar_url} alt={userData.userData.loginname} />
                             </Link>
                             <span>{userData.userData.loginname}</span>

@@ -1,0 +1,44 @@
+.user_content{
+    background-color: #fff;
+    font-size: 14px;
+    border-radius: 3px;
+}
+.user_content .header{
+    padding: 10px;
+    background-color: #f6f6f6;
+    color: #80bd01;
+}
+.user_content .user_inner {
+    padding: 10px;
+    border-top: 1px solid #e5e5e5;
+}
+.user_content .user_inner>div {
+    color: #778087;
+    display: flex;
+    align-items: center;
+}
+.user_content .user_inner>div img{
+    display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 3px;
+}
+.user_content .user_inner p:nth-child(2){
+    margin-top: 20px;
+}
+.user_content .user_inner p {
+  
+        color: #ababab;
+    
+}
+.user_content .user_inner p a{
+  
+        color: #778087;
+    
+}
+.show_more a{
+    color: #778087;
+    font-size: 16px;
+    display: block;
+    padding: 12px;
+}

@@ -15,7 +15,10 @@ class EditorComponent extends Component {
     };
     submitReply = (editorState) => {
         const content = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-        console.log(content);
+        
+        const { addReply ,articleId} = this.props;
+        console.log(this.props);
+        addReply(content,articleId);
         this.setState({
             editorState: EditorState.createEmpty()
         });

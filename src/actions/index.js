@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_TOPICS, CHANGE_TAB, CHANGE_PAGE, GET_ARTICLE_ID, USER_DATA, GET_ARTICLE, REPLY_UPS_ID } from '../constants/actionTypes'
+import { GET_TOPICS, CHANGE_TAB, CHANGE_PAGE, GET_ARTICLE_ID, USER_DATA, GET_ARTICLE, REPLY_UPS_ID,ADD_REPLY ,ADD_TOPICS} from '../constants/actionTypes'
 import { URI, TOKEN } from '../constants/url'
 
 export const getTopics = tab => dispatch => {
@@ -44,17 +44,6 @@ export const getUserData = (login) => dispatch => {
     sessionStorage.removeItem('token')
   }
 }
-// export const getArticle = articleId => dispatch => {
-//   const uri = articleId ? `${URI}/topic/${articleId}` : `${URI}/topic`
-//   axios.get(uri).then(res => {
-
-//     dispatch({
-//       type: GET_ARTICLE,
-//       article: res.data.data
-//     })
-//   });
-// }
-
 export const getArticle = articleId => dispatch => {
   const uri = `${URI}/topic/${articleId}?accesstoken=${sessionStorage.token}`;
   axios.get(uri).then(res => {
@@ -73,11 +62,18 @@ export const collectArticle = articleId => dispatch => {
     })
   });
 }
+export const addTopics = (title,tab,content) => dispatch => {
+  const uri = `${URI}/topics`;
+  axios.post(uri, { accesstoken: sessionStorage.token, title: title,tab:tab,content:content }).then(res => {
+    dispatch({
+      type: ADD_TOPICS,
+      collectArticleId: res.data
+    })
+  });
+}
 export const cancleCollectArticle = articleId => dispatch => {
   const uri = `${URI}/topic_collect/de_collect`;
   axios.post(uri, { accesstoken: sessionStorage.token, topic_id: articleId }).then(res => {
-    console.log(res);
-
     dispatch({
       type: GET_ARTICLE_ID,
       collectArticleId: res.data
@@ -86,13 +82,23 @@ export const cancleCollectArticle = articleId => dispatch => {
 }
 
 export const replyUps = reliyUpsId => dispatch => {
+  
   const uri = `${URI}/reply/${reliyUpsId}/ups`;
+  sessionStorage.token?
   axios.post(uri, { accesstoken: sessionStorage.token }).then(res => {
-    console.log(res.data);
-
     dispatch({
       type: REPLY_UPS_ID,
       replyAction: res.data
     })
-  });
+  }):alert("请登录后点赞！")
+}
+export const addReply = (content,replyId) => dispatch => {
+  const uri = `${URI}/topic/${replyId}/replies`;
+  sessionStorage.token?
+  axios.post(uri, { accesstoken: sessionStorage.token ,content:content,reply_id:replyId}).then(res => {
+    dispatch({
+      type: ADD_REPLY,
+      replyAction: res.data
+    })
+  }):alert("请登录后评论！")
 }

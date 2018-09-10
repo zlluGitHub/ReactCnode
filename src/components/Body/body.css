@@ -27,7 +27,7 @@
     border-radius: 0 0 3px 3px;
 }
 
-.main .panel .inner>span{
+.main .panel .inner>span a{
     display: block;
     border-radius: 3px;
     background-color: #80bd01;

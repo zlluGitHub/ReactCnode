@@ -6,8 +6,8 @@ import MomentComponent from './MomentComponent'
 class TopicList extends Component {
     render() {
         const { topics } = this.props;
-
-        const showList = topics.length !== 0 ? topics.map(data => {
+    
+        const showList = topics ? topics.map(data => {
             const { id, author, top, tab, good, reply_count, visit_count, title, last_reply_at } = data;
 
             return (

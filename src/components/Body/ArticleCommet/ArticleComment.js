@@ -16,19 +16,17 @@ class ArticleComment extends Component {
         });
         const { ups, is_uped } = found;
         const upsNum = is_uped ? ups.length - 1 : replyAction.action === "up" ? ups.length : ups.length + 1
-        console.log(found);
-        console.log(replyAction);
-
         this.setState({
             replyId: reliyUpsId,
             upsNum: upsNum
         })
-
     }
     render() {
-        const { replies } = this.props;
-        const { replyId, upsNum } = this.state;
 
+        const { replies ,addReply ,articleId} = this.props;
+        console.log(this.props);
+        
+        const { replyId, upsNum } = this.state;
         const showReplies = replies ? replies.map((data, index) => <li key={data.id}>
             <div className="reply_item">
                 <Link to="/"><img src={data.author ? data.author.avatar_url : ""} alt={data.author ? data.author.loginname : "未知"} /></Link>
@@ -70,7 +68,7 @@ class ArticleComment extends Component {
                     <div className="header">
                         <span>添加回复</span>
                     </div>
-                    <EditorComponent />
+                    <EditorComponent addReply={addReply} articleId={articleId}/>
                 </div>
 
             </div>

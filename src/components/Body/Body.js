@@ -4,6 +4,8 @@ import './body.css';
 import User from './User/User';
 import TopicsContainer from '../../containers/TopicsContainer';
 import ArticleContainer from '../../containers/ArticleContainer';
+import UserTopics from './UserTopics/UserTopics';
+import AddTopic from './AddTopic/AddTopic';
 class Body extends Component {
     render() {
         const { userData } = this.props
@@ -11,13 +13,15 @@ class Body extends Component {
             <div className="main">
                 <div className="content">
                     <Route path="/" exact component={TopicsContainer} />
-                    <Route path="/topic/:id" exact component={ArticleContainer} />
+                    <Route path="/topics/create" component={AddTopic} />
+                    <Route path="/topic/:id" component={ArticleContainer} />
+                    <Route path="/user" component={UserTopics} />
                 </div>
                 <div className="sidebar">
                     <User userData={userData} />
                     <div className="panel">
                         <div className="inner">
-                            <span>发布话题</span>
+                            <span><Link to="/topics/create">发布话题</Link></span>
                         </div>
                     </div>
                     <div className="panel">

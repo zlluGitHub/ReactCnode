@@ -12,5 +12,4 @@ const rootReducer = combineReducers({
   article,
   replyAction
 });
-
 export default rootReducer
