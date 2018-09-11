@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_TOPICS, CHANGE_TAB, CHANGE_PAGE, GET_ARTICLE_ID, USER_DATA, GET_ARTICLE, REPLY_UPS_ID,ADD_REPLY ,ADD_TOPICS} from '../constants/actionTypes'
+import { GET_TOPICS, CHANGE_TAB, CHANGE_PAGE, GET_ARTICLE_ID, USER_DATA, GET_ARTICLE, REPLY_UPS_ID,ADD_REPLY ,ADD_TOPICS,GET_USERDATA} from '../constants/actionTypes'
 import { URI, TOKEN } from '../constants/url'
 
 export const getTopics = tab => dispatch => {
@@ -28,8 +28,6 @@ export const changePages = (tab, pageNumber) => dispatch => {
 export const getUserData = (login) => dispatch => {
   if (login === 'login') {
     axios.post(`${URI}/accesstoken`, { accesstoken: TOKEN }).then(res => {
-      console.log(res);
-
       dispatch({
         type: USER_DATA,
         userData: { userData: res.data, status: true }
@@ -59,6 +57,15 @@ export const collectArticle = articleId => dispatch => {
     dispatch({
       type: GET_ARTICLE_ID,
       collectArticleId: res.data
+    })
+  });
+}
+export const getUserTopics = loginname => dispatch => {
+  const uri = `${URI}/user/${loginname}`;
+  axios.get(uri).then(res => {  
+    dispatch({
+      type: GET_USERDATA,
+      userData: { userData: res.data.data, status: true }
     })
   });
 }

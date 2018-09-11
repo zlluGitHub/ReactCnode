@@ -14,15 +14,6 @@ class Header extends Component {
     }
     render() {
         const { status } = this.props
-        // const sitting = !status ? (
-        //     <li>
-        //         <a href="javascript:void(0);" onClick={() => this.handleLogin('login')}>注册</a>
-        //     </li>
-        // ) : (
-        //         <li>
-        //             <a href="javascript:void(0);" onClick={() => this.handleLogin('logout')}>设置</a>
-        //         </li>
-        //     );
         const login = !status ? (
             <li>
                 <span onClick={() => this.handleLogin('login')}>登录</span>
@@ -37,7 +28,7 @@ class Header extends Component {
                 <div className="navbar-inner">
                     <div>
                         <Link to="/">
-                            <img src={logo} alt="logo" />
+                            <img src={logo} alt="logo" onClick={() => this.handleLogin('login')} />
                         </Link>
                         <div className="seach">
                             <input type='text' />
@@ -45,7 +36,7 @@ class Header extends Component {
                     </div>
                     <ul>
                         <li>
-                            <Link to="/">首页</Link>
+                            <Link to="/" onClick={() => this.handleLogin('login')}>首页</Link>
                         </li>
 
                         {/* <li>

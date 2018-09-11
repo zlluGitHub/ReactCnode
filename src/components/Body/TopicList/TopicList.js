@@ -2,18 +2,27 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './topiclist.css';
 
-import MomentComponent from './MomentComponent'
+import MomentComponent from './MomentComponent';
+
 class TopicList extends Component {
+   
+    
+    onGetUserTopics(loginname){
+        const {getUserTopics}=this.props;
+        getUserTopics(loginname);
+        
+    }
     render() {
         const { topics } = this.props;
-    
+     console.log(this.props);
         const showList = topics ? topics.map(data => {
             const { id, author, top, tab, good, reply_count, visit_count, title, last_reply_at } = data;
-
+            // console.log(data);
+            
             return (
                 <li className="single_title" key={id}>
                     <div>
-                        <Link to={`/topic/${id}`}><img src={author.avatar_url} alt={author.loginname} title={author.loginname} /></Link>
+                        <Link to="/user" onClick={()=>this.onGetUserTopics(author.loginname)}><img src={author.avatar_url} alt={author.loginname} title={author.loginname} /></Link>
                         <strong>
                             <span>{reply_count}</span>/<span>{visit_count}</span>
                         </strong>

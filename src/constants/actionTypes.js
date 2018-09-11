@@ -7,3 +7,4 @@ export const GET_ARTICLE_ID = 'GET_ARTICLE_ID';
 export const REPLY_UPS_ID = 'REPLY_UPS_ID';
 export const ADD_REPLY = 'ADD_REPLY';
 export const ADD_TOPICS = 'ADD_TOPICS';
+export const GET_USERDATA = 'GET_USERDATA';

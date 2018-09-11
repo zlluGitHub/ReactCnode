@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import './user.css';
 import { Link } from 'react-router-dom';
 class User extends Component {
+    onGetUserTopics(loginname){
+        const {getUserTopics}=this.props;
+        getUserTopics(loginname);
+        
+    }
     render() {
-        const userData = this.props.userData;
+        const userData = this.props.userData;     
         const userMessage = !userData.status ? (
             <div className="inner">
                 <div className="user-card">
@@ -13,7 +18,6 @@ class User extends Component {
                     您可以 登录 或 注册 , 也可以
                 </div>
             </div>
-
         ) : (
                 <div><div className="top">
                     <span>
@@ -23,7 +27,7 @@ class User extends Component {
                     <div className="inner">
 
                         <div className="user-card">
-                            <Link to="/user">
+                            <Link  to="/user" onClick={()=>this.onGetUserTopics(userData.userData.loginname)}>
                                 <img src={userData.userData.avatar_url} alt={userData.userData.loginname} />
                             </Link>
                             <span>{userData.userData.loginname}</span>

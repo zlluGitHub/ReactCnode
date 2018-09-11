@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getTopics, getUserData } from '../../actions';
+import { getTopics, getUserData ,getUserTopics} from '../../actions';
 import { connect } from 'react-redux';
 import '../../assets/global.css';
 import Header from '../Header/Header';
@@ -12,12 +12,12 @@ class App extends Component {
     this.props.getTopics()
   };
   render() {
-    const { getUserData, userData } = this.props;
+    const { getUserData, userData ,getUserTopics} = this.props;
     return (
       <Router>
         <div className="App">
           <Header getUserData={getUserData} status={userData.status} />
-          <Body userData={userData} />
+          <Body userData={userData} getUserTopics={getUserTopics}/>
           <Footer />
         </div>
       </Router>
@@ -25,4 +25,4 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps, { getTopics, getUserData })(App);
+export default connect(mapStateToProps, { getTopics, getUserData ,getUserTopics})(App);

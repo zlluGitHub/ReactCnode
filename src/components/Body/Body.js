@@ -4,21 +4,22 @@ import './body.css';
 import User from './User/User';
 import TopicsContainer from '../../containers/TopicsContainer';
 import ArticleContainer from '../../containers/ArticleContainer';
-import UserTopics from './UserTopics/UserTopics';
 import AddTopic from './AddTopic/AddTopic';
+import UserTopicsContainer from '../../containers/UserTopicsContainer';
 class Body extends Component {
     render() {
-        const { userData } = this.props
+        const { userData ,getUserTopics} = this.props;
+        
         return (
             <div className="main">
                 <div className="content">
                     <Route path="/" exact component={TopicsContainer} />
                     <Route path="/topics/create" component={AddTopic} />
                     <Route path="/topic/:id" component={ArticleContainer} />
-                    <Route path="/user" component={UserTopics} />
+                    <Route path="/user" component={UserTopicsContainer} />
                 </div>
                 <div className="sidebar">
-                    <User userData={userData} />
+                    <User userData={userData} getUserTopics={getUserTopics}/>
                     <div className="panel">
                         <div className="inner">
                             <span><Link to="/topics/create">发布话题</Link></span>
