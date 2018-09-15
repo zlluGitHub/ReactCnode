@@ -5,7 +5,7 @@ import ArticleComment from '../ArticleCommet/ArticleComment';
 class Article extends Component {
     componentDidMount = () => {
         const { match, getArticle } = this.props;
-        getArticle(match.params.id);
+        getArticle(match.params.id);  
     };
     collectArticle = event => {
         const value = event.target.value;
@@ -23,9 +23,7 @@ class Article extends Component {
         }
     }
     render() {
-
-        const { replyAction, article, replyUps ,addReply} = this.props
-        
+        const { replyAction, article,getArticle,replyState, replyUps ,addReply} = this.props;      
         const articleContent = article !== {} ? (
             <div>
                 <div className="topic_header">
@@ -48,7 +46,7 @@ class Article extends Component {
                 <div className="articlecontent" dangerouslySetInnerHTML={{
                     __html: article.content
                 }} />
-                <ArticleComment replies={article.replies} articleId={article.id} replyUps={replyUps} replyAction={replyAction} addReply={addReply}/>
+                <ArticleComment replies={article.replies} articleId={article.id} replyUps={replyUps} replyAction={replyAction} replyState={replyState} getArticle={getArticle} addReply={addReply}/>
             </div>
         ) : (
                 <div>努力加载中,请稍后。。。</div>

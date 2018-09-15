@@ -4,8 +4,8 @@ import './body.css';
 import User from './User/User';
 import TopicsContainer from '../../containers/TopicsContainer';
 import ArticleContainer from '../../containers/ArticleContainer';
-import AddTopic from './AddTopic/AddTopic';
 import UserTopicsContainer from '../../containers/UserTopicsContainer';
+import AddTopicContainer from '../../containers/AddTopicContainer';
 class Body extends Component {
     render() {
         const { userData ,getUserTopics} = this.props;
@@ -14,7 +14,7 @@ class Body extends Component {
             <div className="main">
                 <div className="content">
                     <Route path="/" exact component={TopicsContainer} />
-                    <Route path="/topics/create" component={AddTopic} />
+                    <Route path="/topics/create" component={AddTopicContainer} />
                     <Route path="/topic/:id" component={ArticleContainer} />
                     <Route path="/user" component={UserTopicsContainer} />
                 </div>

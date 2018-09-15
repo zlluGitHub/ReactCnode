@@ -44,7 +44,7 @@ export const getUserData = (login) => dispatch => {
 }
 export const getArticle = articleId => dispatch => {
   const uri = `${URI}/topic/${articleId}?accesstoken=${sessionStorage.token}`;
-  axios.get(uri).then(res => {
+  axios.get(uri).then(res => {   
     dispatch({
       type: GET_ARTICLE,
       getCollectArticle: res.data.data
@@ -74,7 +74,7 @@ export const addTopics = (title,tab,content) => dispatch => {
   axios.post(uri, { accesstoken: sessionStorage.token, title: title,tab:tab,content:content }).then(res => {
     dispatch({
       type: ADD_TOPICS,
-      collectArticleId: res.data
+      addTopic: res.data
     })
   });
 }
@@ -89,7 +89,6 @@ export const cancleCollectArticle = articleId => dispatch => {
 }
 
 export const replyUps = reliyUpsId => dispatch => {
-  
   const uri = `${URI}/reply/${reliyUpsId}/ups`;
   sessionStorage.token?
   axios.post(uri, { accesstoken: sessionStorage.token }).then(res => {
@@ -103,9 +102,10 @@ export const addReply = (content,replyId) => dispatch => {
   const uri = `${URI}/topic/${replyId}/replies`;
   sessionStorage.token?
   axios.post(uri, { accesstoken: sessionStorage.token ,content:content,reply_id:replyId}).then(res => {
+    console.log(res);
     dispatch({
       type: ADD_REPLY,
       replyAction: res.data
     })
-  }):alert("请登录后评论！")
-}
+  }):alert("请登录后评论！");
+};

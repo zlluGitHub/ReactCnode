@@ -22,10 +22,9 @@ class ArticleComment extends Component {
         })
     }
     render() {
-
-        const { replies ,addReply ,articleId} = this.props;
-        console.log(this.props);
         
+        const { replies ,addReply,getArticle,replyState,articleId} = this.props;
+        // console.log(articleId);
         const { replyId, upsNum } = this.state;
         const showReplies = replies ? replies.map((data, index) => <li key={data.id}>
             <div className="reply_item">
@@ -48,8 +47,8 @@ class ArticleComment extends Component {
             }} />
         </li>
         ) : (
-                <div>
-                    评论内容为空！
+            <div>
+                评论内容为空！
             </div>
             )
         return (
@@ -68,7 +67,7 @@ class ArticleComment extends Component {
                     <div className="header">
                         <span>添加回复</span>
                     </div>
-                    <EditorComponent addReply={addReply} articleId={articleId}/>
+                    <EditorComponent replyState={replyState} getArticle={getArticle} addReply={addReply} articleId={articleId}/>
                 </div>
 
             </div>

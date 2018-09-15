@@ -8,6 +8,14 @@ class EditorComponent extends Component {
     state = {
         editorState: EditorState.createEmpty()
     };
+    componentDidMount = () => {
+        const {getArticle,replyState ,articleId } = this.props;
+        if(replyState.success){
+            if(articleId){
+                getArticle(articleId);
+            }
+        }    
+    };
     onEditorStateChange = (editorState) => {
         this.setState({
             editorState,
@@ -15,16 +23,15 @@ class EditorComponent extends Component {
     };
     submitReply = (editorState) => {
         const content = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-        
-        const { addReply ,articleId} = this.props;
-        console.log(this.props);
+        const { addReply,articleId} = this.props;
         addReply(content,articleId);
         this.setState({
             editorState: EditorState.createEmpty()
-        });
+        });  
     };
     render() {
-        const { editorState } = this.state;
+        const { editorState } = this.state; 
+       
         return (
             <div>
                 <Editor
