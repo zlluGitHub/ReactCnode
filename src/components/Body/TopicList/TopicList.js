@@ -17,15 +17,16 @@ class TopicList extends Component {
      console.log(this.props);
         const showList = topics ? topics.map(data => {
             const { id, author, top, tab, good, reply_count, visit_count, title, last_reply_at } = data;
-            // console.log(data);
-            
+            const replySum=visit_count?
+            <strong>
+                <span>{reply_count}</span>/<span>{visit_count}</span>
+            </strong>             
+            :<div></div>;
             return (
                 <li className="single_title" key={id}>
                     <div>
                         <Link to="/user" onClick={()=>this.onGetUserTopics(author.loginname)}><img src={author.avatar_url} alt={author.loginname} title={author.loginname} /></Link>
-                        <strong>
-                            <span>{reply_count}</span>/<span>{visit_count}</span>
-                        </strong>
+                        {replySum}
                         <span className={top ? "active" : good ? "active" : ""}>{top ? "置顶" : good ? "精华" : tab === "share" ? "分享" : "问答"}</span>
                         <Link to={`/topic/${id}`} className="topic_title">{title}</Link>
                     </div>

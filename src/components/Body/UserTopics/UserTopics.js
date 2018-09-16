@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import TopicList from '../TopicList/TopicList';
 import './userTopics.css'
 class UserTopics extends Component {
-    // componentDidMount = () => {
-    //     this.props.getUserTopics()
-    //   };
+    
     render() {
-  
-        console.log(this.props.data);
         const data = this.props.data;
         const inner = data?
             <div className="user_inner">
@@ -36,9 +32,9 @@ class UserTopics extends Component {
                     <span>最近参与的话题</span>
                 </div> 
                 <TopicList topics={data.recent_replies}/>
-                <div className="show_more">
+                {/* <div className="show_more">
                     <a href="">查看更多》</a>
-                </div> 
+                </div>  */}
             </div>: <div className="partake_topics"> 正在加载中。。。</div>;
         return (
             <div className="user_content">

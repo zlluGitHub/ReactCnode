@@ -30,9 +30,9 @@ class Header extends Component {
                         <Link to="/">
                             <img src={logo} alt="logo" onClick={() => this.handleLogin('login')} />
                         </Link>
-                        <div className="seach">
+                        {/* <div className="seach">
                             <input type='text' />
-                        </div>
+                        </div> */}
                     </div>
                     <ul>
                         <li>

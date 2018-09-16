@@ -8,6 +8,16 @@ class ArticleComment extends Component {
         replyId: 1,
         upsNum: 0
     }
+    componentDidMount = () => {
+        const {getArticle,articleId ,replyState} = this.props; 
+        console.log("1111111111");
+        
+        if(replyState.success){
+            if(articleId){   
+                getArticle(articleId);
+            }
+        }    
+    };
     onReplyUps = (reliyUpsId) => {
         this.props.replyUps(reliyUpsId);
         const { replies, replyAction } = this.props;
@@ -22,9 +32,12 @@ class ArticleComment extends Component {
         })
     }
     render() {
-        
-        const { replies ,addReply,getArticle,replyState,articleId} = this.props;
-        // console.log(articleId);
+        const { replies ,addReply,getArticle,articleId,replyState} = this.props; 
+        if(replyState.success){
+            if(articleId){   
+                getArticle(articleId);
+            };
+        };    
         const { replyId, upsNum } = this.state;
         const showReplies = replies ? replies.map((data, index) => <li key={data.id}>
             <div className="reply_item">

@@ -10,20 +10,29 @@ class User extends Component {
     render() {
         const userData = this.props.userData;     
         const userMessage = !userData.status ? (
-            <div className="inner">
-                <div className="user-card">
-                    CNode：Node.js专业中文社区
-                </div>
-                <div>
-                    您可以 登录 或 注册 , 也可以
-                </div>
-            </div>
-        ) : (
-                <div><div className="top">
+            
+            <div>
+                <div className="top">
                     <span>
                         个人信息
                     </span>
                 </div>
+                <div className="inner">
+                    <div className="user-card">
+                        CNode：Node.js专业中文社区
+                    </div>
+                    <div>
+                        您可以 登录 或 注册 , 也可以
+                    </div>
+                </div>
+            </div>
+        ) : (
+                <div>
+                    <div className="top">
+                        <span>
+                            个人信息
+                        </span>
+                    </div>
                     <div className="inner">
 
                         <div className="user-card">

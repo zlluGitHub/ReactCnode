@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
-import draftToHtml from 'draftjs-to-html';
+import draftToMarkdown from 'draftjs-to-markdown';
 import { EditorState, convertToRaw } from 'draft-js';
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './editorComponent.css';
 class EditorComponent extends Component {
     state = {
         editorState: EditorState.createEmpty()
-    };
-    componentDidMount = () => {
-        const {getArticle,replyState ,articleId } = this.props;
-        if(replyState.success){
-            if(articleId){
-                getArticle(articleId);
-            }
-        }    
-    };
+    }; 
     onEditorStateChange = (editorState) => {
         this.setState({
             editorState,
         });
     };
     submitReply = (editorState) => {
-        const content = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+        const content = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
+        console.log(content);
+        
         const { addReply,articleId} = this.props;
         addReply(content,articleId);
         this.setState({
@@ -30,8 +24,7 @@ class EditorComponent extends Component {
         });  
     };
     render() {
-        const { editorState } = this.state; 
-       
+        const { editorState } = this.state;    
         return (
             <div>
                 <Editor

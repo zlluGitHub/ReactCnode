@@ -9,9 +9,13 @@ import { Link } from 'react-router-dom';
 class AddTopic extends Component {
     state = {
         editorState: EditorState.createEmpty(),
-        title:'title',
-        tab:'dev',
+        title:'no',
+        tab:'no'
     }; 
+    componentDidMount = () => {
+     
+        // console.log(this.props);
+    };
     onEditorStateChange = (editorState) => {
         this.setState({
             editorState,
@@ -20,13 +24,28 @@ class AddTopic extends Component {
     submitReply = (editorState) => {
         const content = draftToHtml(convertToRaw(editorState.getCurrentContent()));
         const {addTopics} = this.props;
-        console.log(this.props);
-        
-        addTopics( title,tab,content);
+        const {title,tab}=this.state;
+        if(title!='no'&&tab!='no'){
+            if(addTopics){
+                addTopics( title,tab,content);
+            }
+        }else{
+            alert("请选择板块或添加标题！")
+        }
         this.setState({
             editorState: EditorState.createEmpty()
         });  
     };
+    handleChange(e) {
+        this.setState({
+            title:e.target.value
+        })
+    }
+    handleSelectChange(e){
+        this.setState({
+            tab:e.target.value
+        })
+    }
     render() {
         const { editorState } = this.state; 
         return (
@@ -36,15 +55,16 @@ class AddTopic extends Component {
                 </div> 
                 <div className="select">
                     <span>选择版块：</span>
-                    <select>
-                        <option value ="请选择">请选择</option>
-                        <option value ="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
+                    <select  onChange={e => this.handleSelectChange(e)}>
+                        <option value ="no">请选择</option>
+                        <option value ="ask">分享</option>
+                        <option value="share">问答</option>
+                        <option value="job">招聘</option>
+                        <option value="dev">客户端测试</option>
                     </select>
                 </div>
                 <div className="input">
-                <textarea rows="1" placeholder="标题字数 10 字以上"></textarea>
+                <textarea rows="1" placeholder="标题字数 10 字以上" onChange={e => this.handleChange(e)}></textarea>
                 </div>
                 <div>
                 <Editor

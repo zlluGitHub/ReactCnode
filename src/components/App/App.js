@@ -6,19 +6,21 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Body from '../Body/Body';
 import { BrowserRouter as Router } from 'react-router-dom';
+import PopUp from '../PopUp/PopUp';
 const mapStateToProps = state => state;
 class App extends Component {
-  componentDidMount = () => {
-    this.props.getTopics()
-  };
+   componentDidMount = () => {  
+    this.props.getTopics();
+   };
   render() {
-    const { getUserData, userData ,getUserTopics} = this.props;
+    const { getUserData, userData ,getUserTopics} = this.props;    
     return (
       <Router>
         <div className="App">
           <Header getUserData={getUserData} status={userData.status} />
           <Body userData={userData} getUserTopics={getUserTopics}/>
           <Footer />
+          {/* <PopUp/> */}
         </div>
       </Router>
     );

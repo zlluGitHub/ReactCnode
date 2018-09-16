@@ -27,12 +27,13 @@ export const changePages = (tab, pageNumber) => dispatch => {
 }
 export const getUserData = (login) => dispatch => {
   if (login === 'login') {
-    axios.post(`${URI}/accesstoken`, { accesstoken: TOKEN }).then(res => {
+    axios.post(`${URI}/accesstoken`, { accesstoken: TOKEN }).then(res => {    
       dispatch({
         type: USER_DATA,
         userData: { userData: res.data, status: true }
       });
       sessionStorage.token = TOKEN;
+      sessionStorage.userName = res.data.loginname;
     });
   } else {
     dispatch({
@@ -71,12 +72,16 @@ export const getUserTopics = loginname => dispatch => {
 }
 export const addTopics = (title,tab,content) => dispatch => {
   const uri = `${URI}/topics`;
-  axios.post(uri, { accesstoken: sessionStorage.token, title: title,tab:tab,content:content }).then(res => {
-    dispatch({
-      type: ADD_TOPICS,
-      addTopic: res.data
-    })
-  });
+  if(sessionStorage.token){
+    axios.post(uri, { accesstoken: sessionStorage.token, title: title,tab:tab,content:content }).then(res => {
+      dispatch({
+        type: ADD_TOPICS,
+        addTopic: res.data
+      })
+    });
+  }else{
+    alert("请登录后再发布评论！");
+  }
 }
 export const cancleCollectArticle = articleId => dispatch => {
   const uri = `${URI}/topic_collect/de_collect`;
