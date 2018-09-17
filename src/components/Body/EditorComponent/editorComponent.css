@@ -24,5 +24,10 @@
     box-shadow: none;
     line-height: 2em;
     vertical-align: middle;
-    color: #fff;cursor: pointer;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.25s;
+}
+.submit_btn:hover{
+    opacity: 0.8;
 }

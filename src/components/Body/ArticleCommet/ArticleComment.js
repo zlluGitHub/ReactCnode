@@ -25,12 +25,15 @@ class ArticleComment extends Component {
             return element.id === reliyUpsId;
         });
         const { ups, is_uped } = found;
-        const upsNum = is_uped ? ups.length - 1 : replyAction.action === "up" ? ups.length : ups.length + 1
-        this.setState({
-            replyId: reliyUpsId,
-            upsNum: upsNum
-        })
-    }
+        if(sessionStorage.token){
+            const upsNum = is_uped ? ups.length - 1 : replyAction.action === "up" ? ups.length : ups.length + 1;
+            this.setState({
+                replyId: reliyUpsId,
+                upsNum: upsNum
+            });
+        };
+        
+    };
     render() {
         const { replies ,addReply,getArticle,articleId,replyState} = this.props; 
         if(replyState.success){

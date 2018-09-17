@@ -4,6 +4,8 @@ import './userTopics.css'
 class UserTopics extends Component {
     
     render() {
+        console.log(this.props);
+        
         const data = this.props.data;
         const inner = data?
             <div className="user_inner">

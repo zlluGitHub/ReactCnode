@@ -80,7 +80,7 @@ export const addTopics = (title,tab,content) => dispatch => {
       })
     });
   }else{
-    alert("请登录后再发布评论！");
+    alert("请登录后再发布话题！");
   }
 }
 export const cancleCollectArticle = articleId => dispatch => {

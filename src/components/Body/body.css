@@ -36,6 +36,11 @@
     color: #fff;
     cursor: pointer;
     font-size: 14px;
+    transition: opacity 0.5s;
+}
+.main .panel .inner>span a:hover{
+    opacity: 0.8;
+
 }
 .main .panel .inner ul li a{
     display: block;

@@ -62,6 +62,5 @@ class EditorComponent extends Component {
         );
     }
 }
-
 export default EditorComponent;
 
