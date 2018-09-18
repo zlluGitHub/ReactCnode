@@ -2,37 +2,40 @@ import React, { Component } from 'react';
 import './popUp.css';
 class PopUp extends Component {
     state={    
-        classBox:'box',
+        display:'flex',
         show:false
     }
-    onClose=(parameter)=>{
-        console.log("sdd");
-        
+    onClose=(parameter)=>{   
         if(!parameter){
             this.setState({
                 show:true
-            })
-        }
-              
+            });
+            const time = setTimeout(()=>{
+                this.setState({
+                    display:'none'
+                });
+                clearTimeout(time);
+            },250)
+        }     
     }
-
     render() {
-        const {show}=this.state;      
+        const {show,display}=this.state;    
+        const {	content }=this.props;    
         return (
-            <div className={show?"box hidden":"box"} >
-                <div className="modal">
+            <div className={show?"box hidden":"box"} style={{display:display}}>
+                <div  className="modal">
                     <div className="madal-top">
                         <span>提示！</span>
-                        <span onClick={()=>(this.onClose(false))}>X</span>
+                        <span onClick={()=>this.onClose(false)}>X</span>
                     </div>
                     <div className="madal-middle">
-                        <div>内容</div>
+                        <div>{content}</div>
                     </div>
                     <div className="madal-down">
-                        <button type="button" onClick={()=>(this.onClose(false))}> 
+                        <button type="button" onClick={()=>this.onClose(false)}> 
                             <span>取消</span>
                         </button>
-                        <button type="button" className="active" onClick={()=>(this.onClose(true))}> 
+                        <button type="button" className="active" onClick={()=>this.onClose(true)}> 
                             <span>确定</span>
                         </button>             
                     </div>     

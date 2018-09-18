@@ -12,10 +12,6 @@ class AddTopic extends Component {
         title:'no',
         tab:'no'
     }; 
-    componentDidMount = () => {
-     
-        // console.log(this.props);
-    };
     onEditorStateChange = (editorState) => {
         this.setState({
             editorState,

@@ -13,12 +13,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 1;
+    transition: opacity 0.25s;
 }
 .hidden{
-    display: none;
-}
-.show{
-    display: fixed;
+    opacity: 0; 
 }
 .box .modal{
     background-color: #fff;
@@ -27,6 +26,8 @@
     transform: scale(1,1);
     transition: transform 0.25s;
 }
+
+
 .box .madal-top{
     padding: 16px 24px;
     border-radius: 4px 4px 0 0;
